@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Домашняя страница</title>
+{% endblock %}
+{% block body %}
+<div class="container mt-2">  
+    <main>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
+            <p class="fs-5 text-body-secondary">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {% if data|length > 0 %}
+        {% for el in data %}
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">{{ el.name }}</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ el.price }}<small class="text-body-secondary fw-light">$</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>{{ el.description }}</li>
+                </ul>
+                <a href="/{{ el.id }}/delete" class="w-100 btn btn-lg btn-outline-primary">Купить товар</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        
+        {% else %}
+        <p>У нас еще нет товаров на сайте</p>
+        {% endif %}
+        </div>  
+</div>  
+{% endblock %}
+             
+
+      
+        
+  
